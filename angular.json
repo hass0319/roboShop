@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "roboShop:build:production"
+              "buildTarget": "roboShop:build:production"
             },
             "development": {
-              "browserTarget": "roboShop:build:development"
+              "buildTarget": "roboShop:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "roboShop:build"
+            "buildTarget": "roboShop:build"
           }
         },
         "test": {
