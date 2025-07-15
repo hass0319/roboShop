@@ -1,3 +1,27 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header{
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+  /* box-sizing: border-box; */
+  background: linear-gradient(#e66465, #9198e5);
+}
+
+nav {
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  width: 100%;
+}
+
 .cart-count {
   position: absolute;
   top: -7px;
@@ -11,4 +35,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* .left-links {
+  margin-left: 10px;
+} */
+
+a {
+  margin: 0 10px 0 10px ;
 }

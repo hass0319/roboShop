@@ -1,1 +1,11 @@
-<p>product-card works!</p>
+<div class="product-card">
+  <img src="#" [alt]="product.name">
+  <h3>{{product.name}}</h3>
+  <p>{{product.description}}</p>
+  <h3>{{product.category}}</h3>
+  <div class="prices">
+    <span *ngIf="product.discountPrice" class="discount">{{product.price}}</span>
+    <span [class.oldPrice]="product.discountPrice">{{product.discountPrice}}</span>
+  </div>
+  <button (click)="addToCart(product)">+</button>
+</div>
