@@ -1,1 +1,25 @@
-<p>header works!</p>
+<header>
+  <div class="Logo">
+    <img src="#" alt="Shop Logo">
+  </div>
+  <nav>
+    <a routerLink="/">Home</a>
+    <a routerLink="/catalog">Catalog</a>
+    <a routerLink="/cart">Cart</a>
+  </nav>
+
+  <div class="auth-links">
+    <ng-container *ngIf="auth.isLoggedIn() else showLinks">
+      <button (click)=" logout()">Logout</button>
+    </ng-container>
+    <ng-template #showLinks>
+      <a routerLink="sign-in">Sign In</a>
+      <a routerLink="register">Register</a>
+    </ng-template>
+    <a routerLink="/cart" class="cart-icon">
+      <i class="bi bi-bag-heart-fill"></i>
+      <span *ngIf="(cartService.cartCount$ | async)?.toString() !== '0' && (cartService.cartCount$ | async) != null"
+        class="cart-count">{{cartService.cartCount$ | async}}</span>
+    </a>
+  </div>
+</header>
