@@ -13,8 +13,9 @@ export class CartService {
   private _cartSubject$ = new BehaviorSubject<Product[]>(this.getCartFromStorage());
   cart$ = this._cartSubject$.asObservable();
   cartCount$ = this.cart$.pipe(
-    map(cart => cart.length)
-  );
+  map(cart => cart.reduce((count, item) => count + (item.quantity || 1), 0))
+);
+
 
   addToCart (product: Product){
     const currentCart = this.getCartFromStorage();
@@ -25,7 +26,7 @@ export class CartService {
       currentCart[existingProductIndex].quantity = (currentCart[existingProductIndex].quantity || 1) + 1;
     } else {
       // If product does not exist, add it
-      currentCart.push(product);
+      currentCart.push({ ...product, quantity: 1 });
     }
 
     localStorage.setItem('robot-cart', JSON.stringify(currentCart));

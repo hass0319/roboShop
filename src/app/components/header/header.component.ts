@@ -14,7 +14,9 @@ export class HeaderComponent implements OnInit {
     public auth: AuthService
   ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(){
+    this.cartService.cartCount$.subscribe(val => console.log('Cart Count:', val));
+  }
 
   logout() {
     this.auth.logout();

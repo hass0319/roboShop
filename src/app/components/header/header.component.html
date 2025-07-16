@@ -6,7 +6,13 @@
     <div class="left-links">
       <a routerLink="/">Home</a>
       <a routerLink="/catalog">Catalog</a>
-      <a routerLink="/cart">Cart</a>
+      <a routerLink="/cart" class="cart-icon">
+        <i class="bi bi-bag-heart-fill"></i>
+        <span *ngIf="(cartService.cartCount$ | async) as count">
+          🛒 <span *ngIf="count > 0" class="cart-count">{{ (cartService.cartCount$ | async) || 0 }}</span>
+        </span>
+
+      </a>
     </div>
 
 
@@ -18,12 +24,6 @@
         <a routerLink="/sign-in">Sign In</a>
         <a routerLink="/register">Register</a>
       </ng-template>
-      <a routerLink="/cart" class="cart-icon">
-        <i class="bi bi-bag-heart-fill"></i>
-        <span *ngIf="(cartService.cartCount$ | async)?.toString()
-            !== '0' && (cartService.cartCount$ | async) != null" class="cart-count">{{cartService.cartCount$ | async}}
-        </span>
-      </a>
     </div>
   </nav>
 </header>
