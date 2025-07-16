@@ -1,12 +1,18 @@
-<div>
-  <div>
-    <button (click)="filterCategory('All')">All</button>
-    <button (click)="filterCategory('Heads')">Heads</button>
-    <button (click)="filterCategory('Arms')">Arms</button>
-    <button (click)="filterCategory('Torsos')">Torsos</button>
-    <button (click)="filterCategory('Bases')">Bases</button>
+<div class="catalog">
+  <div class="filters">
+    <button *ngFor="let cat of ['All', 'Heads', 'Arms', 'Torsos', 'Bases']"
+      [class.active]="category.toLowerCase() === cat.toLowerCase()" (click)="filterCategory('All')">
+      {{cat}}
+    </button>
   </div>
+
   <div class="product-grid">
-    <app-product-card *ngFor="let p of products" [product]="p"></app-product-card>
+    <app-product-card *ngFor="let p of products" [product]="p" class="fade-in"></app-product-card>
   </div>
 </div>
+
+
+<!-- <button (click)="filterCategory('Heads')">Heads</button>
+<button (click)="filterCategory('Arms')">Arms</button>
+<button (click)="filterCategory('Torsos')">Torsos</button>
+<button (click)="filterCategory('Bases')">Bases</button> -->

@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class CatalogComponent implements OnInit {
   products: Product[] = [];
-  category: string = 'all';
+  category: string = 'All';
 
   constructor( private productService: ProductService) { }
 
@@ -19,6 +19,6 @@ export class CatalogComponent implements OnInit {
 
   filterCategory(categ: string){
     this.category = categ;
-    this.products = this.productService.getProducts(categ);
+    this.products = this.productService.getProducts(categ.toLowerCase());
   }
 }
