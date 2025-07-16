@@ -1,0 +1,30 @@
+.catalog {
+  padding: 2rem;
+}
+
+.filters {
+  margin-bottom: 1.5rem;
+}
+
+.filters button {
+  background: #f5f5f5;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 14px;
+  margin-right: 10px;
+  font-size: 1rem;
+  color: #444;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.filters button:hover {
+  background: #e9548b;
+  color: #fff;
+}
+
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}

@@ -1,1 +1,27 @@
-<p>register works!</p>
+<div class="auth-container">
+  <h2>Register</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="submit()">
+    <label for="name">Name</label>
+    <input id="name" type="text" formControlName="name" placeholder="Your name" />
+    <div class="error" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+      Name is required.
+    </div>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" placeholder="Your email" />
+    <div class="error" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+      Valid email is required.
+    </div>
+
+    <label for="password">Password</label>
+    <input id="password" type="password" formControlName="password" placeholder="Password (min 6 chars)" />
+    <div class="error" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+      Password (min 6 chars) required.
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  </form>
+  <div class="auth-switch">
+    <a routerLink="/sign-in">Already registered? Sign In</a>
+  </div>
+</div>

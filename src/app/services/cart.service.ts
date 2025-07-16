@@ -5,6 +5,7 @@ import { BehaviorSubject, map } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CartService {
 
   constructor() { }
@@ -31,14 +32,13 @@ export class CartService {
     this._cartSubject$.next(currentCart);
   }
 
+  removeFromCart(productId: number) {
+    const cart = this._cartSubject$.value.filter(p => p.id !== productId);
+    this._cartSubject$.next(cart);
+    localStorage.setItem('robot-cart', JSON.stringify(cart));
+  }
 
   private getCartFromStorage(): Product[] {
     return JSON.parse(localStorage.getItem('robot-cart') || '[]');
   }
-
 }
-
-//  private getCartFromStorage(): Product[] {
-//     const cartJson = localStorage.getItem('cart');
-//     return cartJson ? JSON.parse(cartJson) as Product[] : [];
-//   }
