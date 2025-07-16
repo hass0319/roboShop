@@ -7,11 +7,12 @@
       <a routerLink="/">Home</a>
       <a routerLink="/catalog">Catalog</a>
       <a routerLink="/cart" class="cart-icon">
+        Cart
         <i class="bi bi-bag-heart-fill"></i>
+        🛒
         <span *ngIf="(cartService.cartCount$ | async) as count">
-          🛒 <span *ngIf="count > 0" class="cart-count">{{ (cartService.cartCount$ | async) || 0 }}</span>
+          <span *ngIf="count > 0" class="cart-count">{{ (cartService.cartCount$ | async) || 0 }}</span>
         </span>
-
       </a>
     </div>
 

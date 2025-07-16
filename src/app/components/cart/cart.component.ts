@@ -28,6 +28,12 @@ export class CartComponent implements OnInit {
     });
   }
 
+  increaseQuantity(id: number){
+    this.cartService.changeQuantity(id, 1);
+  }
+  decreaseQuantity(id: number){
+    this.cartService.changeQuantity(id, -1);
+  }
   remove(id: number) {
     this.cartService.removeFromCart(id);
   }
