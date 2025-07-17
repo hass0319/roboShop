@@ -1,29 +1,8 @@
 <header class="main-header">
-  <div class="Logo">
+  <div class="logo">
     <img src="#" alt="Shop Logo">
   </div>
   <nav class="navbar">
-    <!-- <div class="nav-links">
-      <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
-        Home
-      </a>
-
-      <a routerLink="/catalog" routerLinkActive="active-link">
-        Catalog
-      </a>
-
-      <a routerLink="/cart" class="cart-link" routerLinkActive="active-link">
-        <i class="bi bi-bag-heart-fill cart-icon"></i>
-
-        <span>Cart</span>
-
-        <span *ngIf="(cartService.cartCount$ | async) as count">
-          <span *ngIf="count > 0" class="cart-count">
-            {{ (cartService.cartCount$ | async) || 0 }}
-          </span>
-        </span>
-      </a>
-    </div> -->
     <button class="nav-toggle" (click)="toggleMenu()" aria-label="Toggle navigation">
       <span>{{ getActiveLinkLabel() }}</span>
       <span class="arrow">{{ showMenu ? '▲' : '▼' }}</span>
@@ -31,7 +10,8 @@
 
     <ul class="nav-links" [class.open]="showMenu">
       <li *ngFor="let link of navLinks">
-        <a [routerLink]="link.path" routerLinkActive="active-link" (click)="closeMenu()">
+        <a [routerLink]="link.path" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMenu()">
           <ng-container [ngSwitch]="link.label">
             <i *ngSwitchCase="'Cart'" class="bi bi-bag-heart-fill cart-icon"></i>
           </ng-container>
@@ -60,3 +40,26 @@
     </div>
   </nav>
 </header>
+
+
+<!-- <div class="nav-links">
+      <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        Home
+      </a>
+
+      <a routerLink="/catalog" routerLinkActive="active-link">
+        Catalog
+      </a>
+
+      <a routerLink="/cart" class="cart-link" routerLinkActive="active-link">
+        <i class="bi bi-bag-heart-fill cart-icon"></i>
+
+        <span>Cart</span>
+
+        <span *ngIf="(cartService.cartCount$ | async) as count">
+          <span *ngIf="count > 0" class="cart-count">
+            {{ (cartService.cartCount$ | async) || 0 }}
+          </span>
+        </span>
+      </a>
+    </div> -->
