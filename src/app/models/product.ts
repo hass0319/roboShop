@@ -5,6 +5,7 @@ export interface Product {
   category: 'Heads' | 'Arms' | 'Torsos' | 'Bases';
   price: number;
   discountPrice?: number;
-  imageUrl: string;
   quantity?: number;
+  imageUrl: string;
+  imageUrl2?: string;
 }

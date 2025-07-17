@@ -1,64 +1,305 @@
 .product-card {
   background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(32, 40, 72, 0.07);
-  padding: 18px;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(32, 40, 72, 0.09), 0 1.5px 6px rgba(0,0,0,0.04);
+  padding: 22px 18px 18px 18px;
   display: flex;
-  flex-direction: column;
+    flex-direction: column;
+    align-items: center;
+  transition: box-shadow 0.22s, transform 0.18s;
+  width: 90%;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  cursor: pointer;
+}
+
+.product-card:hover,
+.product-card:focus-within {
+  box-shadow: 0 10px 38px rgba(32, 40, 72, 0.18), 0 4px 16px rgba(0, 0, 0, 0.07);
+  transform: translateY(-3px) scale(1.023);
+  z-index: 2;
+}
+
+.imag-container,
+.img-container {
+  width: 130px;
+  height: 130px;
+  border-radius: 13px;
+  overflow: hidden;
+  background: #f3f3f3;
+  margin-bottom: 15px;
+  position: relative;
+  display: flex;
   align-items: center;
-  transition: box-shadow .15s, transform .15s;
-  width: 240px;
-  margin: 12px;
+  justify-content: center;
 }
 
-.product-card:hover {
-  box-shadow: 0 8px 32px rgba(32, 40, 72, 0.15);
-  transform: translateY(-2px) scale(1.012);
-}
-
-.product-card img {
-  width: 110px;
-  height: 110px;
+.img-container img,
+.imag-container img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  transition: opacity 0.3s cubic-bezier(.4, 0, .2, 1);
+  display: block;
+  background: #fff;
+  border-radius: 13px;
 }
 
-.details h3 {
-  font-size: 1.2rem;
-  margin: 8px 0;
+.prod-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 7px 0 4px 0;
+  color: #222;
+  text-align: center;
 }
 
-.details p {
-  font-size: 0.95rem;
+.prod-desc {
+  font-size: 0.98rem;
   color: #7a7a7a;
+  text-align: center;
+  margin-bottom: 7px;
+  min-height: 34px;
 }
 
-.prices {
-  margin: 6px 0 10px;
+.prod-cat,
+.model-cat,
+.modal-cat {
+  font-size: 0.97rem;
+  color: #e9548b;
+  margin-bottom: 7px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.prices,
+.modal-prices {
+  margin: 9px 0 16px 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  justify-content: center;
 }
 
 .discount {
   color: #e9548b;
-  font-size: 1.1rem;
+  font-size: 1.09rem;
   font-weight: bold;
-  margin-right: 8px;
 }
 
-.old-price {
+.old-price,
+.oldPrice {
   text-decoration: line-through;
-  color: #aaa;
+  color: #bbb;
+  font-size: 1.01rem;
+}
+
+.regular {
+  color: #242424;
+  font-size: 1.08rem;
 }
 
 button {
-  padding: 7px 20px;
-  background: #e9548b;
+  padding: 10px 25px;
+  background: linear-gradient(90deg, #f33c63, #fe8c2a);
   color: #fff;
   border: none;
-  border-radius: 12px;
-  font-weight: 500;
-  transition: background 0.15s;
+  border-radius: 13px;
+  font-weight: 600;
+  font-size: 1.08rem;
+  letter-spacing: 0.01em;
   cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 2px 12px rgba(249, 79, 124, 0.06);
+  transition: background 0.18s, transform 0.16s;
+  position: relative;
+  z-index: 1;
 }
 
-button:hover {
-  background: #ff65a2;
+button:hover,
+button:focus-visible {
+  background: linear-gradient(90deg, #d32a52, #fd6f0d);
+  transform: scale(1.08);
+}
+
+button:disabled {
+  opacity: 0.73;
+  cursor: default;
+}
+
+.added-res {
+  color: #38ba60;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-left: 4px;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+.product-card.added {
+  animation: added-pop .45s cubic-bezier(.3, 2, .32, .93);
+  box-shadow: 0 12px 52px rgba(44, 189, 25, 0.09);
+}
+
+@keyframes added-pop {
+  0% {transform: scale(1.05);}
+  30% {transform: scale(1.11);}
+  65% {transform: scale(1.04);}
+  100% {transform: scale(1.02);}
+}
+
+
+.quickview-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1001;
+  background: rgba(36, 38, 43, 0.43);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInModalBg 0.22s;
+}
+
+@keyframes fadeInModalBg {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 19px;
+  box-shadow: 0 8px 56px rgba(32, 40, 72, 0.20), 0 2px 9px rgba(0, 0, 0, 0.06);
+  padding: 34px 30px 30px 30px;
+  max-width: 430px;
+  min-width: 260px;
+  width: 96vw;
+  max-height: 97vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  animation: popInModal 0.29s cubic-bezier(.29, 1.21, .43, .99);
+  outline: none;
+}
+
+@keyframes popInModal {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.close-btn {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  font-size: 2.1rem;
+  background: none;
+  border: none;
+  color: #e9548b;
+  cursor: pointer;
+  z-index: 3;
+  transition: color 0.15s, transform 0.12s;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: #f33c63;
+  transform: scale(1.13);
+}
+
+.modal-img-wrap {
+  width: 210px;
+  height: 210px;
+  background: #f7f7f7;
+  border-radius: 13px;
+  overflow: hidden;
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.33s cubic-bezier(.4, 0, .2, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.alt-img {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.modal-img-wrap:hover .alt-img,
+.modal-img-wrap:focus .alt-img {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-img-wrap:hover .modal-img,
+.modal-img-wrap:focus .modal-img {
+  opacity: 0;
+}
+
+.modal-details {
+  width: 100%;
+  text-align: center;
+}
+
+.modal-details h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.7rem;
+}
+
+.modal-desc {
+  font-size: 1.04rem;
+  color: #5f5f5f;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 19px 6px 22px 6px;
+    min-width: unset;
+    max-width: 97vw;
+  }
+
+  .modal-img-wrap {
+    width: 134px;
+    height: 134px;
+  }
+
+  .modal-details h2 {
+    font-size: 1.09rem;
+  }
 }

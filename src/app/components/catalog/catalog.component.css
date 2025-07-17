@@ -85,7 +85,7 @@
 .products-grid {
   display: grid;
     grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
+  gap: 3rem 4rem;
   width: 100%;
   min-height: 300px;
 }

@@ -54,6 +54,7 @@
 
 .cart-item img {
   margin-right: 10px;
+  margin-left: 10px;
   width: 68px;
   height: 68px;
   border-radius: 13px;
@@ -101,6 +102,7 @@
   align-items: center;
   gap: 7px;
   margin-left: 16px;
+  margin-right: 10px;
 }
 
 .quantity-controls button {
