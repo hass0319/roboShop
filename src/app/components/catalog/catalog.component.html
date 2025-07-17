@@ -1,12 +1,13 @@
 <div class="catalog">
   <div class="filters">
     <button *ngFor="let cat of ['All', 'Heads', 'Arms', 'Torsos', 'Bases']"
-      [class.active]="category.toLowerCase() === cat.toLowerCase()" (click)="filterCategory('All')">
+      [class.active]="category.toLowerCase() === cat.toLowerCase()" (click)="filterCategory(cat)">
       {{cat}}
     </button>
   </div>
 
   <div class="products-grid">
-    <app-product-card *ngFor="let p of products" [product]="p" class="fade-in"></app-product-card>
+    <app-product-card *ngFor="let p of products; let i = index" [product]="p" class="fade-in"
+      [ngStyle]="{'--card-index': i}"></app-product-card>
   </div>
 </div>

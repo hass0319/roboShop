@@ -15,6 +15,7 @@ export class ProductService {
       price: 1222.5,
       discountPrice: 1000,
       imageUrl: "#",
+      imageUrl2: "#",
     },
     {
       id: 2,
@@ -33,6 +34,7 @@ export class ProductService {
       price: 1222.5,
       discountPrice: 1000,
       imageUrl: "#",
+      imageUrl2: "#",
     },
     {
       id: 4,
@@ -42,6 +44,7 @@ export class ProductService {
       price: 1222.5,
       discountPrice: 1000,
       imageUrl: "#",
+      imageUrl2: "#",
     },
     {
       id: 5,
@@ -50,6 +53,7 @@ export class ProductService {
       category: 'Arms',
       price: 1222.5,
       imageUrl: "#",
+      imageUrl2: "#",
     },
     {
       id: 6,
@@ -59,6 +63,7 @@ export class ProductService {
       price: 1222.5,
       discountPrice: 1000,
       imageUrl: "#",
+      imageUrl2: "#",
       quantity: 1
     },
     {
@@ -68,6 +73,7 @@ export class ProductService {
       category: 'Torsos',
       price: 1222.5,
       imageUrl: "#",
+      imageUrl2: "#",
     },
     {
       id: 8,
@@ -77,6 +83,7 @@ export class ProductService {
       price: 1222.5,
       discountPrice: 1000,
       imageUrl: "#",
+      imageUrl2: "#",
     }
   ];
 
@@ -86,7 +93,11 @@ export class ProductService {
     if (!category || category === 'All') {
       return this.products;
     } else {
-      return this.products.filter(p => p.category === category);
+      return this.products.filter(
+        p => {
+          return p.category.toLowerCase() === category.toLowerCase()
+        }
+      );
     }
   }
 

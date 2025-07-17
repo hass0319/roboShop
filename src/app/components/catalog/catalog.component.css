@@ -90,6 +90,25 @@
   min-height: 300px;
 }
 
+.fade-in {
+  animation: fadeIn 0.65s cubic-bezier(.42, 0, .2, 1);
+  animation-fill-mode: both;
+  /* opacity: 0; */
+  animation-delay: calc(var(--card-index, 0) * 80ms);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (max-width: 1200px) {
   .products-grid {
     grid-template-columns: repeat(3, 1fr);

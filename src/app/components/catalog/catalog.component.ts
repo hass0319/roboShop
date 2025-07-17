@@ -19,6 +19,11 @@ export class CatalogComponent implements OnInit {
 
   filterCategory(categ: string){
     this.category = categ;
-    this.products = this.productService.getProducts(categ.toLowerCase());
+    this.products = this.productService.getProducts(
+      categ.toLowerCase() ===
+        'all' ?
+        undefined :
+        categ.toLowerCase()
+    );
   }
 }
