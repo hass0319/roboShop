@@ -1,0 +1,76 @@
+<div class="product-card" [class.added]="added" tabindex=0 (mouseenter)="showAltImage()" (mouseleave)="showMainImage()"
+  (touchstart)="showAltImage()" (touchend)="showMainImage()" (click)="openModal($event)">
+  <div class="imag-container">
+    <img [src]="imageIndex === 0 ?
+      product.imageUrl :
+      product.imageUrl2 || product.imageUrl" [alt]="product.name">
+  </div>
+
+  <h3 class="prod-title">{{product.name}}</h3>
+
+  <div class="prices">
+    <span *ngIf="product.discountPrice" class="discount">
+      ${{product.discountPrice}}
+    </span>
+
+    <span [class.oldPrice]="product.discountPrice" [class.regular]="!product.discountPrice">
+      ${{product.price}}
+    </span>
+  </div>
+
+  <button (click)="onAddToCartBtn($event);" [disabled]="added">
+    <span *ngIf="!added">
+      Add to Cart
+    </span>
+    <span *ngIf="added" class="
+    added-res">
+      ✓ Added!
+    </span>
+  </button>
+
+</div>
+
+<!-- Quick-View (popUp) Modal -->
+
+<div class="quickview-modal" *ngIf="showModal" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()" tabindex="0">
+    <button class="close-btn" (click)="closeModal()" aria-label="Close">&times;</button>
+
+    <div class="modal-img-wrap">
+      <img [src]="product.imageUrl" [alt]="product.name" class="modal-img" />
+      <img *ngIf="product.imageUrl2" [src]="product.imageUrl2" [alt]="product.name + ' alt'"
+        class="modal-img alt-img" />
+    </div>
+
+    <div class="modal-details">
+      <h2>{{ product.name }}</h2>
+
+      <div class="model-cat">{{product.category}}</div>
+
+      <div class="modal-prices">
+        <span *ngIf="product.discountPrice" class="discount">
+          ${{product.discountPrice}}
+        </span>
+
+        <span [class.old-price]="product.discountPrice" [class.regular]="!product.discountPrice">
+          ${{product.price}}
+        </span>
+      </div>
+
+      <p class="modal-desc">
+        {{product.description}}
+      </p>
+
+      <button (click)="onAddToCartBtn($event)" [disabled]="added">
+        <span *ngIf="!added">
+          Add to Cart
+        </span>
+
+        <span *ngIf="added" class="added-res">
+          ✓ Added!
+        </span>
+      </button>
+    </div>
+
+  </div>
+</div>

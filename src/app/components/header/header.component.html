@@ -1,0 +1,65 @@
+<header class="main-header">
+  <div class="logo">
+    <img src="#" alt="Shop Logo">
+  </div>
+  <nav class="navbar">
+    <button class="nav-toggle" (click)="toggleMenu()" aria-label="Toggle navigation">
+      <span>{{ getActiveLinkLabel() }}</span>
+      <span class="arrow">{{ showMenu ? '▲' : '▼' }}</span>
+    </button>
+
+    <ul class="nav-links" [class.open]="showMenu">
+      <li *ngFor="let link of navLinks">
+        <a [routerLink]="link.path" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMenu()">
+          <ng-container [ngSwitch]="link.label">
+            <i *ngSwitchCase="'Cart'" class="bi bi-bag-heart-fill cart-icon"></i>
+          </ng-container>
+          {{ link.label }}
+          <span *ngIf="link.label === 'Cart' && (cartService.cartCount$ | async) as count">
+            <span *ngIf="count > 0" class="cart-count">{{ count }}</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="auth-links">
+      <ng-container *ngIf="auth.isLoggedIn() else showLinks">
+        <button (click)=" logout()" class="logout-btn">
+          Logout
+        </button>
+      </ng-container>
+      <ng-template #showLinks>
+        <a routerLink="/sign-in">
+          Sign In
+        </a>
+        <a routerLink="/register" class="register-link">
+          Register
+        </a>
+      </ng-template>
+    </div>
+  </nav>
+</header>
+
+
+<!-- <div class="nav-links">
+      <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        Home
+      </a>
+
+      <a routerLink="/catalog" routerLinkActive="active-link">
+        Catalog
+      </a>
+
+      <a routerLink="/cart" class="cart-link" routerLinkActive="active-link">
+        <i class="bi bi-bag-heart-fill cart-icon"></i>
+
+        <span>Cart</span>
+
+        <span *ngIf="(cartService.cartCount$ | async) as count">
+          <span *ngIf="count > 0" class="cart-count">
+            {{ (cartService.cartCount$ | async) || 0 }}
+          </span>
+        </span>
+      </a>
+    </div> -->
