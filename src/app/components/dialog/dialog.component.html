@@ -1,0 +1,42 @@
+<dialog #dialog (close)="closed.emit()" tabindex="0">
+  <div class="modal-content" (click)="$event.stopPropagation()" tabindex="0">
+    <button class="close-btn" (click)="closeModal()" aria-label="Close">&times;</button>
+
+    <div class="modal-img-wrap">
+      <img [src]="product.imageUrl" [alt]="product.name" class="modal-img" />
+      <img *ngIf="product.imageUrl2" [src]="product.imageUrl2" [alt]="product.name + ' alt'"
+        class="modal-img alt-img" />
+    </div>
+
+    <div class="modal-details">
+      <h2 class="modal-title">{{ product.name }}</h2>
+
+      <div class="model-cat">{{product.category}}</div>
+
+      <div class="modal-prices">
+        <span *ngIf="product.discountPrice" class="discount">
+          ${{product.discountPrice}}
+        </span>
+
+        <span [class.old-price]="product.discountPrice" [class.regular]="!product.discountPrice">
+          ${{product.price}}
+        </span>
+      </div>
+
+      <p class="modal-desc">
+        {{product.description}}
+      </p>
+
+      <button (click)="onAddToCartBtn($event)" [disabled]="added">
+        <span *ngIf="!added">
+          Add to Cart
+        </span>
+
+        <span *ngIf="added" class="added-res">
+          ✓ Added!
+        </span>
+      </button>
+    </div>
+
+  </div>
+</dialog>
